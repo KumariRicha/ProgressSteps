@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli&display=swap');
+
+:root{
+    /* these are global vars that can be used */
+    --line--border-fill:blue;
+    --line--border-empty:#e0e0e0;
+}
+
+*{
+    box-sizing: border-box;  /* this is done so that if we apply padding or border on any element its Actual Width isnot affected */
+}
+body {
+    font-family: 'Muli', sans-serif;
+    background-color: #f6f7fb;
+    display: flex;
+    height: 100vh;
+    align-items: center; /*CENTERS  HORIZONTALLY it needs width*/
+    justify-content: center; /*CENTERS  VERTICALLY its needs height  min-height*/
+    margin: 0;
+    overflow: hidden;
+}
+.progress-container {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom:30px ;
+    max-width: 100%;
+    width: 350px;
+
+}
+.progress-container::before {
+    content: ''; /* This is a MUST todo when using ::before or ::after */
+    background-color: var(--line--border-empty);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    z-index: -1;
+    }
+    
+.progress {
+background-color:  var(--line--border-fill);
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+height: 4px;
+width: 0%;
+z-index: -1;
+transition: .4s ease;
+}
+.circle{
+    background-color: white;
+    color: #999;
+    border-radius: 50%;
+    height: 30px;
+    width: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid  var(--line--border-empty);
+    transition: .4s ease;
+    }
+.circle.active{
+   border-color:  var(--line--border-fill);
+}
+.btn{
+    background-color:  var(--line--border-fill);
+    color: #fff;
+    border: 0;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: inherit;
+    padding: 8px 30px;
+    margin: 5px;
+    font-size: 14px;
+}
+.btn:active{
+    transform: scale(0.98);
+}
+.btn:active{
+outline: 0;
+}
+.btn:disabled{
+background-color: var(--line--border-empty);   
+cursor: not-allowed;
+ }
